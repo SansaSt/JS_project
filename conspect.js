@@ -80,3 +80,39 @@ function two(){
 }
 
 one(two); //вызов callback function
+
+// Циклы
+
+let n = 0;
+while(n < 5){
+  console.log(n);
+  n++;
+};
+
+do{
+  console.log(n);
+  n++
+}
+while (n < 5);
+
+for(let i = 0; i < 5; i++) {
+
+  if(i === 3){
+    break;
+  }
+
+  if(i === 3){
+    continue; // пропуск значения 3
+  }
+
+
+  console.log(i);
+}
+
+let start = function(){
+  money = +prompt('Ваш месячный доход?');
+
+  while (isNaN(money) || money.trim() === '' || money === null) {
+    money = +prompt('Ваш месячный доход?');
+  }
+};
