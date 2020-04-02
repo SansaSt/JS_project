@@ -4,19 +4,12 @@ let isNumber = function(n) {
  }; // Проверка на число
 
 let money,
-    income,
-    addExpenses,
-    deposit,
-    mission,
-    period,
+    income = 'Вклад',
+    addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую'),
+    deposit = confirm('Есть ли у вас депозит в банке?'),
+    mission = 300000,
+    period = 10,
     budgetDay;
-
-money,
-income = 'Вклад';
-addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-deposit = confirm('Есть ли у вас депозит в банке?');
-mission = 300000;
-period = 10;
 
 let start = function(){
   
