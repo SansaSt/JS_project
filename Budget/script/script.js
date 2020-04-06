@@ -26,6 +26,10 @@ let appData = {
   deposit: false,
   mission: 300000,
   period: 3,
+  budget: money,
+  budgetDay: 0,
+  budgetMonth: 0,
+  expensesMonth: 0,
   asking: function(){ 
     let sum,
         expense,
@@ -59,10 +63,9 @@ let appData = {
     },
 
   getTargetMonth: function(){
-    let getTarget = appData.mission / appData.getBudget();
-    console.log('getTarget: ', getTarget);
+    let getTarget = appData.mission / appData.budgetMonth;
       if (getTarget > 0) {
-        console.log('Цель будет достигнута за : ', getTarget);
+        console.log('Цель будет достигнута за : ', getTarget + ' месяцев');
       } else {
         console.log('Цель не будет достигнута');
       }
@@ -80,11 +83,6 @@ let appData = {
       return ('Что-то пошло не так');
     }
   },
-
-  budget: money,
-  budgetDay: 0,
-  budgetMonth: 0,
-  expensesMonth: 0,
 };
 
 
@@ -93,9 +91,10 @@ appData.getExpensesMonth();
 appData.budgetMonth = appData.budget - appData.getExpensesMonth();
 appData.budgetDay = (appData.budget - appData.getExpensesMonth()) / 30;
 appData.getTargetMonth();
-appData.getStatusIncome();
+console.log(appData.getStatusIncome());
 
-console.log('Расходы за месяц: ' + appData.expenses);
+
+console.log('Расходы за месяц: ' + appData.getExpensesMonth());
 
 
 
