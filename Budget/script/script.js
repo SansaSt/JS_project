@@ -1,9 +1,48 @@
 'use strict';
+// lesson09 
+
+const startBtn = document.getElementById('start');
+
+const addIncome = document.getElementsByTagName('button')[0];
+
+const addExpenses = document.getElementsByTagName('button')[1];
+
+const addIncomeItem = document.querySelectorAll('.additional_income-item');
+
+const checkDeposit = document.querySelector('#deposit-check');
+
+const budgetDay = document.querySelector('.budget_day-value');
+
+const expensesMonth = document.querySelector('.expenses_month-value');
+
+const additionalIncome = document.querySelector('.additional_income-value');
+
+const additionalExpenses = document.querySelector('.additional_expenses-value');
+
+const resultIncome = document.querySelector('.income_period-value');
+
+const getTarget = document.querySelector('.target_month-value');
+
+const salaryAmount = document.querySelector('.salary-amount');
+
+const incomeTitle = document.querySelector('.income-title');
+
+const incomeAmount = document.querySelector('.income-amount');
+
+const expensesTitle = document.querySelector('.expenses-title');
+
+const expensesAmount = document.querySelector('.expenses-amount');
+
+const addExpensesItem = document.querySelector('.additional_expenses-item');
+
+const selectPeriod = document.querySelector('.period-select');
+
+
 let isNumber = function(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
  }; // Проверка на число
 
- let isString = function(n) {
+let isString = function(n) {
   let num =  Number(n);
   if (typeof n === 'string' && isNaN(num)) {
     return true;
