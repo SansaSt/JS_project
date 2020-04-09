@@ -1,5 +1,5 @@
 'use strict';
-// lesson09 
+// lesson09
 
 const startBtn = document.getElementById('start');
 
@@ -36,6 +36,7 @@ const expensesAmount = document.querySelector('.expenses-amount');
 const addExpensesItem = document.querySelector('.additional_expenses-item');
 
 const selectPeriod = document.querySelector('.period-select');
+
 
 
 let isNumber = function(n) {
