@@ -99,6 +99,14 @@ let appData = {
         plusExpenses.style.display = 'none';
       }
     },
+    addIncomeBlock: function() {
+      let cloneIncomeItem = incomeItems[0].cloneNode(true);
+      incomeItems[0].parentNode.insertBefore(cloneIncomeItem, plusIncome);
+      incomeItems = document.querySelectorAll('.income-items');
+      if (incomeItems.length === 3) {
+        plusIncome.style.display = 'none';
+      }
+    },
     getExpenses: function(){
       expensesItems.forEach(function(item){
         let itemExpenses = item.querySelector('.expenses-title').value;
@@ -120,16 +128,6 @@ let appData = {
       appData.incomeMonth += +appData.income[key];
       }
     },
-    addIncomeBlock: function() {
-      let cloneIncomeItem = incomeItems[0].cloneNode(true);
-      cloneIncomeItem.querySelector('.income-title').value = '';
-      cloneIncomeItem.querySelector('.income-amount').value = '';
-      incomeItems[0].parentNode.insertBefore(cloneIncomeItem, btnPlusIncomeAdd);
-      incomeItems = document.querySelectorAll('.income-items');
-      if (incomeItems.length === 3) {
-        btnPlusIncomeAdd.style.display = 'none';
-      }
-    },
     getAddExpenses: function(){
       let addExpenses = additionalExpensesItem.value.split(',');
       addExpenses.forEach(function(item){
@@ -137,7 +135,7 @@ let appData = {
         if (item !== ''){
           appData.addExpenses.push(item);
         }
-      })
+      });
     },
     getAddIncome: function(){
       additionalIncomeItem.forEach(function(item){
@@ -202,6 +200,7 @@ let appData = {
 start.addEventListener('click', appData.start);
 
 plusExpenses.addEventListener('click', appData.addExpensesBlock);
+plusIncome.addEventListener('click', appData.addIncomeBlock);
 periodSelect.addEventListener('input', appData.changePeriod);
 salaryAmount.addEventListener('input', function() {
   if (salaryAmount.value !== '') {
@@ -215,10 +214,6 @@ appData.budgetDay = Math.floor(appData.budgetMonth / 30);
 appData.getTargetMonth();
 console.log(appData.expenses);
 appData.getInfoDeposit();
-
-for (let key in appData) {
-  console.log('Наша программа включает в себя данные: ' + key + ' - ' + appData[key]);
-};
 
 let str = appData.addExpenses;
 str.forEach((el, i) => {
