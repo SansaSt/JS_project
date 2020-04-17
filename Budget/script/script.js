@@ -248,7 +248,7 @@ let appData = {
           element.remove();
         }
       });
-      plusExpenses = 'block';
+      plusExpenses.style.display = 'block';
     }
   };
     
