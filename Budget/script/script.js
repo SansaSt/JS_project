@@ -143,7 +143,7 @@ let appData = {
     },
     getAddExpenses: function(){
       let addExpenses = additionalExpensesItem.value.split(',');
-      addExpenses.forEach(function(item){
+      addExpenses.forEach(item => {
         item = item.trim();
         if (item !== ''){
           this.addExpenses.push(item);
@@ -210,6 +210,11 @@ let appData = {
     },
     reset: function(){
       let inputText = document.querySelectorAll('[type="text"]');
+      let inputAll = document.querySelectorAll('input:not(.period-select)');
+
+      inputAll.forEach(element => {
+        element.value = '';    
+      });
 
       inputText.forEach(function(item){
         item.disabled = false;
@@ -230,6 +235,20 @@ let appData = {
     
       startBtn.style.display = 'block';
       cancelBtn.style.display = 'none';
+      periodSelect.value = 1;
+      incomeItems.forEach((element, i) => {  
+        if (i !== 0) {
+          element.remove();
+        }
+      });
+      btnPlusIncomeAdd.style.display = 'block';
+    
+      expensesItems.forEach((element, i) => {  
+        if (i !== 0) {
+          element.remove();
+        }
+      });
+      btnPlusExpensesAdd.style.display = 'block';
     }
   };
     
