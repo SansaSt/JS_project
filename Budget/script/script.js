@@ -241,14 +241,14 @@ let appData = {
           element.remove();
         }
       });
-      btnPlusIncomeAdd.style.display = 'block';
+      plusIncome.style.display = 'block';
     
       expensesItems.forEach((element, i) => {  
         if (i !== 0) {
           element.remove();
         }
       });
-      btnPlusExpensesAdd.style.display = 'block';
+      plusExpenses = 'block';
     }
   };
     
