@@ -1,3 +1,5 @@
+'use strict';
+
 const body = document.querySelector('body');
 
 function DomElement(selector, height, width, bg, fontSize) {
@@ -6,7 +8,7 @@ function DomElement(selector, height, width, bg, fontSize) {
   this.width = width;
   this.bg = bg;
   this.fontSize = fontSize;
-};
+}
 
 DomElement.prototype.render = function() { 
 
@@ -19,10 +21,11 @@ DomElement.prototype.render = function() {
     newElement.classList.add('best');
   } 
 
-  newElement.style.cssText = 'height: this.height'; 
-  newElement.style.cssText = 'width: this.width';
-  newElement.style.cssText = 'background-color: this.bg';
-  newElement.style.cssText = 'font-size: this.fontSize';
+  newElement.style.cssText = `height:`  + this.height + `; \
+                            width:` + this.width + `; \
+                            background:` + this.bg + `; \
+                            font-Size:` + this.fontSize;
+
   newElement.textContent = 'Hello, world';
 
   body.append(newElement);
