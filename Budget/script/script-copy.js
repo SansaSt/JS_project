@@ -98,14 +98,15 @@ class AppData {
 
     showResult () {
 
-      incomePeriodValue.value = this.calcPeriodMoney();
-      budgeMonthValue.value = this.budgetMonth;
+      incomePeriodValue.value = this.calcPeriod();
+      budgetMonthValue.value = this.budgetMonth;
       budgetDayValue.value = this.budgetDay;
-      expensesMmonthValue.value = this.expensesMonth;
+      expensesMonthValue.value = this.expensesMonth;
       additionalExpensesValue.value = this.addExpenses.join(', ');
       additionalIncomeValue.value = this.addIncome;
       targetMonthValue.value = Math.ceil(this.getTargetMonth());
-      incomePeriodValue.value = this.calcPeriodMoney() ;
+      incomePeriodValue.value = this.calcPeriod();
+
     }
 
     addExpensesBlock (){
@@ -178,11 +179,14 @@ class AppData {
     }
 
     getInfoDeposit () {
-  
-      addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-      this.addExpenses = addExpenses.toLowerCase().split(', ');
-      this.deposit = confirm('Есть ли у вас депозит в банке?');
-
+        if (this.deposit) {
+          do {
+            this.percentDeposit = prompt('Какой годовой процент?');
+          } while (isNaN(this.percentDeposit) || this.percentDeposit === ' ' || this.percentDeposit === null);
+          do {
+            this.moneyDeposit = prompt('Какая сумма вложена?');
+          } while (isNaN(this.moneyDeposit) || this.moneyDeposit === '' || this.moneyDeposit === ' ' || this.moneyDeposit === null);
+        }
     }
 
     getExpensesMonth () {
@@ -217,11 +221,6 @@ class AppData {
       } else {
         return ('Что-то пошло не так');
       }
-    }
-
-    getInfoDeposit () {
-
-     
     }
 
     calcPeriod () {
@@ -281,13 +280,9 @@ class AppData {
 
     startBtn.addEventListener('click', this.start.bind(this));
     cancelBtn.addEventListener('click', this.reset.bind(this));
-
-    btnPlusIncomeAdd.addEventListener('click', this.addExpIncBlock);
-    btnPlusExpensesAdd.addEventListener('click', this.addExpIncBlock);
-
-    depositCheck.addEventListener('change', this.depositHandler.bind(this));
-
-    periodSelect.addEventListener('input', this.changlePeriodSelect.bind(this));
+    plusIncome.addEventListener('click', this.addIncomeBlock);
+    plusExpenses.addEventListener('click', this.addExpensesBlock);
+    periodSelect.addEventListener('input', this.changePeriod.bind(this));
     salaryAmount.addEventListener('input', () => {
       if (salaryAmount.value !== '') {
         startBtn.disabled = false;    
@@ -297,6 +292,9 @@ class AppData {
     });
   }
 }
+
+const appData = new AppData();
+appData.eventListeners();
 
 /* let str = appData.addExpenses;
 str.forEach((el, i) => {
